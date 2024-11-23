@@ -1,12 +1,18 @@
-import Services from '../components/Services';
+
+
+import Hero from '../components/Hero';
+import Ser from './Services';
 import Testimonials from '../components/Testimonials';
-import Hero from "../components/Hero";
+import About from './About';
+import Contact from '../pages/Contact';
 
 const Home = () => (
     <>
-        <Hero/>
-        <Services />
-        <Testimonials />
+   <Hero/>
+   <Ser/>
+   <Testimonials/>
+   <About/>
+   <Contact/>
     </>
 );
 
