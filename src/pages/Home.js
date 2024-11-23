@@ -4,7 +4,7 @@ import Hero from "../components/Hero";
 
 const Home = () => (
     <>
-        {/*<Hero/>*/}
+        <Hero/>
         <Services />
         <Testimonials />
     </>

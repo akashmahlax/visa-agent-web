@@ -1,22 +1,38 @@
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
+import { OrbitControls, Stars } from '@react-three/drei';
+import { useState } from 'react';
 
-const Hero = () => (
-    <section className="bg-secondary text-center py-20">
-        <h1 className="text-5xl font-bold text-primary mb-4">Simplifying Your Visa Journey</h1>
-        <p className="text-lg text-gray-700">Expert visa consultancy services to make your dreams a reality.</p>
-        <div className="h-96">
-            <Canvas>
-                <ambientLight intensity={0.5} />
-                <directionalLight position={[0, 0, 5]} />
-                <mesh>
-                    <sphereGeometry args={[1, 32, 32]} />
-                    <meshStandardMaterial color="gold" />
-                </mesh>
-                <OrbitControls />
-            </Canvas>
-        </div>
-    </section>
-);
+const Hero = () => {
+    const [hovered, setHovered] = useState(false);
+
+    return (
+        <section className="bg-gradient-to-r from-blue-500 to-purple-600 text-center py-20">
+            <div className="container mx-auto px-4">
+                <h1 className="text-6xl font-extrabold text-white mb-6">Explore the Universe of Opportunities</h1>
+                <p className="text-xl text-gray-200 mb-8">Join us on a journey to discover endless possibilities with our expert guidance.</p>
+                <button className="bg-white text-blue-600 font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-gray-100 transition duration-300 ease-in-out">
+                    Get Started
+                </button>
+                <div className="h-96 mt-12">
+                    <Canvas>
+                        <ambientLight intensity={0.3} />
+                        <directionalLight position={[5, 5, 5]} intensity={1} />
+                        <Stars />
+                        <mesh
+                            onPointerOver={() => setHovered(true)}
+                            onPointerOut={() => setHovered(false)}
+                            scale={hovered ? 1.2 : 1}
+                            position={[0, 0, 0]}
+                        >
+                            <icosahedronGeometry args={[1, 0]} />
+                            <meshStandardMaterial color={hovered ? "lightblue" : "skyblue"} />
+                        </mesh>
+                        <OrbitControls />
+                    </Canvas>
+                </div>
+            </div>
+        </section>
+    );
+};
 
 export default Hero;
